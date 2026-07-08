@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neutral-50 text-neutral-800 font-sans;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-hover text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 active:scale-95 shadow-sm;
+  }
+  
+  .btn-secondary {
+    @apply bg-neutral-100 hover:bg-neutral-200 text-neutral-800 font-semibold py-2 px-4 rounded-lg transition-colors border border-neutral-200;
+  }
+  
+  .btn-ghost {
+    @apply text-neutral-600 hover:bg-neutral-100 py-2 px-4 rounded-lg transition-colors;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl p-6 shadow-card border border-neutral-200 hover:shadow-card-hover transition-shadow;
+  }
+  
+  .input {
+    @apply w-full bg-white border border-neutral-200 rounded-lg px-4 py-2 text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all;
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all;
+  }
+  
+  .nav-item.active {
+    @apply bg-primary text-white font-semibold;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

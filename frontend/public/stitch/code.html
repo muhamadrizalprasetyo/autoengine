@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Auto Engine - Servis Mobil Berkualitas, Transparan, &amp; Bebas Antre</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c8c5ca",
+                    "on-secondary-fixed-variant": "#47464a",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#fff6f5",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "on-tertiary-fixed": "#001e30",
+                    "inverse-surface": "#2f3038",
+                    "on-surface": "#1a1b22",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#5c403c",
+                    "surface-dim": "#dad9e3",
+                    "surface-container-low": "#f4f2fd",
+                    "surface-bright": "#fbf8ff",
+                    "on-tertiary-container": "#f3f8ff",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#e4e1e6",
+                    "primary-container": "#dc2626",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#656467",
+                    "outline": "#916f6b",
+                    "primary": "#b70011",
+                    "on-primary-fixed": "#410002",
+                    "on-tertiary-fixed-variant": "#004b71",
+                    "primary-fixed": "#ffdad6",
+                    "surface-container-highest": "#e3e1ec",
+                    "on-secondary-fixed": "#1b1b1e",
+                    "surface-variant": "#e3e1ec",
+                    "tertiary-fixed-dim": "#90cdff",
+                    "secondary-fixed": "#e4e1e6",
+                    "secondary": "#5f5e61",
+                    "on-primary": "#ffffff",
+                    "surface": "#fbf8ff",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#bf0715",
+                    "tertiary": "#005e8d",
+                    "surface-container": "#eeedf7",
+                    "inverse-on-surface": "#f1effa",
+                    "outline-variant": "#e6bdb8",
+                    "on-primary-fixed-variant": "#93000b",
+                    "inverse-primary": "#ffb4ab",
+                    "background": "#fbf8ff",
+                    "tertiary-fixed": "#cbe6ff",
+                    "surface-container-high": "#e8e7f1",
+                    "on-background": "#1a1b22",
+                    "tertiary-container": "#0078b2",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "container-max-width": "1280px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                    "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                    "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.3); }
+        .ambient-shadow { box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04); }
+        .glow-focus:focus-within { box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2); }
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, visibility; }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .pulsing-fab { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+        .zebra-row:nth-child(even) { background-color: #FAFAFA; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg antialiased selection:bg-primary-container selection:text-white">
+<!-- 1. Header (TopNavBar) -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300" id="main-header">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-3xl" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">Auto Engine</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center font-label-md text-label-md">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#services">Services</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#why-us">Why Us</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#testimonials">Testimonials</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#contact">Contact</a>
+</nav>
+<div class="hidden md:flex items-center gap-4">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors duration-200" href="/login">Login</a>
+<a class="bg-primary-container text-white px-6 py-2 rounded font-label-md hover:bg-primary transition-colors duration-200" href="/get-started">Get Started</a>
+</div>
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main>
+<!-- 2. Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-on-surface">
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
+<div class="bg-cover bg-center w-full h-full" data-alt="A cinematic, high-quality, high-contrast shot of a sleek modern automotive workshop interior. Bright white LED lighting reflects off polished pristine floors. A mechanic in clean dark uniform is working on a high-end vehicle. The scene conveys intense professionalism, technical precision, and a premium light-mode SaaS aesthetic with deep blacks, crisp whites, and subtle vivid red accents. Wide angle." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_dkFGGhmgNrmIqMXISovbxCPrOtZVFyF-HLTZkODoQ4Q3SvYZtSX1pz69L5DMoW-_fXEuQvuGxGY6oH9F3PhVAztFZ7_7A89ZVOsw86qCPpvlG8td5Qp1P6JJ5zH6a2m7JGVWmZwg4iTv12l14LQTaipOiGl3yERrfQQHwYQOWeNsYmBkhxIqYyNooNncRhA7KmsuJxNW09FIn2daZPt8Tq4VHetgb_cCTvWUlmgnOwtPYIv5dWrk')"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center">
+<h1 class="text-white font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6 leading-tight drop-shadow-lg">
+                    Servis Mobil Berkualitas, <br class="hidden md:block"/>Transparan, &amp; Bebas Antre
+                </h1>
+<p class="text-on-tertiary/90 font-body-lg text-body-lg mb-10 max-w-2xl mx-auto">
+                    Rasakan pengalaman perawatan kendaraan kelas profesional. Sistem manajemen cerdas kami memastikan efisiensi waktu dan transparansi biaya tanpa kompromi.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
+<a class="bg-primary-container text-white px-8 py-4 rounded font-label-md text-label-md w-full sm:w-auto hover:bg-primary transition-colors duration-200 flex items-center justify-center gap-2 ambient-shadow" href="/login">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                        Booking Jadwal Sekarang
+                    </a>
+</div>
+</div>
+<button class="absolute bottom-8 right-8 z-20 w-12 h-12 bg-white/10 backdrop-blur rounded-full flex items-center justify-center border border-white/20 text-white hover:bg-white/20 transition-all" id="music-toggle">
+<span class="material-symbols-outlined" id="music-icon">volume_off</span>
+</button>
+</section>
+<!-- 3. Keunggulan Sistem (Why Choose Us) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface" id="why-us">
+<div class="max-w-container-max-width mx-auto">
+<div class="text-center mb-16 fade-in-section">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Keunggulan Sistem Kami</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Pendekatan modern untuk perawatan kendaraan, memprioritaskan efisiensi Anda.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter fade-in-section">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg ambient-shadow border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center mb-4 text-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2 text-on-surface">Real-time Tracking</h3>
+<p class="text-body-sm text-on-surface-variant">Pantau status pengerjaan mobil Anda secara langsung dari perangkat Anda.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg ambient-shadow border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center mb-4 text-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2 text-on-surface">Harga Transparan</h3>
+<p class="text-body-sm text-on-surface-variant">Rincian biaya yang jelas di awal. Tanpa biaya tersembunyi, tanpa kejutan.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg ambient-shadow border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center mb-4 text-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">schedule</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2 text-on-surface">Bebas Antre</h3>
+<p class="text-body-sm text-on-surface-variant">Sistem booking pintar kami mengalokasikan waktu presisi untuk kendaraan Anda.</p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg ambient-shadow border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center mb-4 text-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">engineering</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2 text-on-surface">Mekanik Profesional</h3>
+<p class="text-body-sm text-on-surface-variant">Dikerjakan oleh teknisi bersertifikat dengan standar operasional yang ketat.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Layanan Kami (Our Services) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="services">
+<div class="max-w-container-max-width mx-auto">
+<div class="mb-16 flex flex-col md:flex-row justify-between items-end fade-in-section">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Layanan Kami</h2>
+<p class="text-on-surface-variant max-w-xl">Layanan komprehensif untuk menjaga performa optimal kendaraan Anda.</p>
+</div>
+<a class="text-primary-container font-label-md flex items-center gap-1 hover:underline mt-4 md:mt-0" href="#">
+                        Lihat Semua Layanan <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter fade-in-section">
+<!-- Service 1 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden ambient-shadow border border-outline-variant/30 group">
+<div class="h-48 relative overflow-hidden bg-secondary-container">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Close up photography of fresh amber motor oil being poured into a clean car engine funnel. Bright, clinical workshop lighting. Light mode aesthetic with crisp whites, metallic greys, and high contrast. Depth of field focusing on the pour." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiRwSDXgtaLI4C1KvwfdQcK1VciWSHOa6KZTUlrD2mBABsTq4JXebEQxjeTFb84qeHWO92eQxXt85oqgu2WdiLUpsOFkfM4jdQVJp5Bgm_UAVlZMQpxkvJxpa2AhqNJCtGFchd1YDZX31HdLZYPs4sksB_A3XVUDKvjVLI92FW4sbuJsOImwbyPIcLI1L-Q8W5RnSTlGgfWoubr0SvtgQT3eZUHA2TECHVjXqTE_zGahKjym25kzKN')"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Ganti Oli Reguler</h3>
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded text-[10px] font-label-caps tracking-wider">POPULER</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-6 border-b border-surface-variant pb-6">Penggantian oli mesin full synthetic berserta filter oli orisinal.</p>
+<div class="flex items-center gap-2 text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">timer</span>
+<span>Estimasi: 45 Menit</span>
+</div>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden ambient-shadow border border-outline-variant/30 group">
+<div class="h-48 relative overflow-hidden bg-secondary-container">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A professional mechanic meticulously inspecting a car engine block that has been partially disassembled on a clean workbench. Bright surgical-style lighting. A serious, high-end automotive engineering environment. Light grey and white tones predominate." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTpXP9oPfLynYVrBJ5WTc_faXgvHVNMy3M1e4XiIXkIFIdyiFlWz1dQLDmISoPazQbL9PmY8TQTPf88GfSBIVZNCDUCFK-lcnY5dOTlxiS-xddq8c4mNQauSsaApgOonSJ_BAVhLYzPf9XDHGSozwqoTaiwPDW_w63ncEpYzY0sVHMzLMoUvv9BFpYtadcr3yIm-dCEOHSvKtWNaUscP_7JhDzIuHriKhYXcjy0HouSqxEZ8vJ6vjf')"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Overhaul (Turun Mesin)</h3>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-6 border-b border-surface-variant pb-6">Perbaikan menyeluruh komponen internal mesin untuk mengembalikan performa.</p>
+<div class="flex items-center gap-2 text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">timer</span>
+<span>Estimasi: 3-5 Hari</span>
+</div>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden ambient-shadow border border-outline-variant/30 group">
+<div class="h-48 relative overflow-hidden bg-secondary-container">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Detailed macro shot of a brand new high-performance red brake caliper and slotted brake disc being installed. Pristine condition, bright light reflecting off the metal. Clean, professional mechanical aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAeQa_GpQ4ZkRi5n0KC9uEOpaPWfvjmUJR8xVv_Wq0QFRJVZ-9SN8f-Iktbusr3VO3alyOKtDPpRzxi3C6CoCpFSNKDZoPPPHiSu8QzvQpCovtvsytuZVf09-ATybd0eeiCP5nbm2y8O5UfIiaU___k4MgTKiptRdKYu21KJ_fBj_FCPCc-ibvYlofjcgR7zvOEvCxkhXeuXHkoIP1Mjso8AelYX_pC1vMdWQL3j95IJJeOCMHMqT9U')"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Servis Sistem Rem</h3>
+<span class="bg-error-container text-on-error-container px-2 py-1 rounded text-[10px] font-label-caps tracking-wider">ESENSIAL</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-6 border-b border-surface-variant pb-6">Pengecekan, pembersihan, dan penggantian kampas rem demi keamanan.</p>
+<div class="flex items-center gap-2 text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">timer</span>
+<span>Estimasi: 90 Menit</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Cara Kerja (How it Works) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="max-w-container-max-width mx-auto">
+<div class="text-center mb-16 fade-in-section">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Alur Kerja Cerdas</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Sistem kami dirancang untuk meminimalkan friksi dari booking hingga serah terima.</p>
+</div>
+<div class="relative fade-in-section">
+<!-- Connecting line -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-surface-variant -translate-y-1/2 z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-2 border-primary-container flex items-center justify-center mb-6 shadow-sm">
+<span class="font-headline-md text-headline-md text-primary-container">1</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2">Daftar &amp; Booking</h3>
+<p class="text-body-sm text-on-surface-variant">Pilih jadwal luang melalui platform online kami.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-2 border-surface-variant flex items-center justify-center mb-6 shadow-sm">
+<span class="font-headline-md text-headline-md text-on-surface-variant">2</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2">Bawa Mobil</h3>
+<p class="text-body-sm text-on-surface-variant">Datang tepat waktu tanpa perlu mengantre.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-2 border-surface-variant flex items-center justify-center mb-6 shadow-sm">
+<span class="font-headline-md text-headline-md text-on-surface-variant">3</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2">Pantau Progress</h3>
+<p class="text-body-sm text-on-surface-variant">Terima update real-time pengerjaan di dashboard Anda.</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-2 border-surface-variant flex items-center justify-center mb-6 shadow-sm">
+<span class="font-headline-md text-headline-md text-on-surface-variant">4</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold mb-2">Bayar &amp; Selesai</h3>
+<p class="text-body-sm text-on-surface-variant">Invoice transparan. Bayar mudah, mobil siap melaju.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 10. Final CTA -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-primary-container text-white text-center relative overflow-hidden">
+<!-- Decorative background pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="max-w-3xl mx-auto relative z-10 fade-in-section">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6">Siap Merasakan Servis Tanpa Antre?</h2>
+<p class="font-body-lg text-body-lg text-white/80 mb-10">Bergabung dengan ratusan pelanggan yang telah beralih ke manajemen bengkel modern. Jadwalkan perawatan mobil Anda sekarang.</p>
+<a class="inline-flex items-center gap-2 bg-white text-primary-container px-8 py-4 rounded font-label-md hover:bg-surface-container-lowest transition-colors duration-200" href="/login">
+                    Buat Akun &amp; Booking Sekarang
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</section>
+</main>
+<!-- 11. Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface w-full">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max-width mx-auto">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="text-headline-md font-headline-md font-bold text-on-surface">Auto Engine</span>
+</div>
+<p class="text-body-sm text-on-secondary-container mb-4">
+                    Jalan Raya Pasar Kemis Jatiuwung,<br/>
+                    Tangerang, Banten
+                </p>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-4">KONTAK</h4>
+<ul class="space-y-3 font-body-sm text-body-sm">
+<li><a class="text-on-secondary-container hover:text-primary transition-all flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm">call</span> 085695115354</a></li>
+<li><a class="text-on-secondary-container hover:text-primary transition-all flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm">chat</span> WhatsApp</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-4">PERUSAHAAN</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-secondary-container">
+<li><a class="hover:text-primary transition-all" href="#">Tentang Kami</a></li>
+<li><a class="hover:text-primary transition-all" href="#">Karir</a></li>
+<li><a class="hover:text-primary transition-all" href="#">Syarat &amp; Ketentuan</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-4">SOSIAL MEDIA</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-secondary-container">
+<li><a class="hover:text-primary transition-all flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm">photo_camera</span> Instagram</a></li>
+<li><a class="hover:text-primary transition-all flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm">share</span> Facebook</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-4 mt-8 pt-8 border-t border-outline-variant/30 flex justify-between items-center text-body-sm text-on-secondary-container">
+<p>© 2024 Auto Engine Management. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<a aria-label="Contact via WhatsApp" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200 pulsing-fab" href="https://wa.me/085695115354">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</a>
+<script>
+        // Scroll Intersection Observer for fade-in elements
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Header Scroll Effect
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-md');
+                    header.classList.replace('bg-surface/90', 'bg-surface/95');
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.classList.replace('bg-surface/95', 'bg-surface/90');
+                }
+            });
+
+            // Music Toggle Mock
+            const musicBtn = document.getElementById('music-toggle');
+            const musicIcon = document.getElementById('music-icon');
+            let isPlaying = false;
+            
+            musicBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                musicIcon.textContent = isPlaying ? 'volume_up' : 'volume_off';
+                musicBtn.classList.toggle('bg-white/30', isPlaying);
+            });
+        });
+    </script>
+</body></html>
