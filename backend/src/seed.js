@@ -6,10 +6,13 @@ const Service = require('./models/Service');
 const Inventory = require('./models/Inventory');
 const Booking = require('./models/Booking');
 const Transaction = require('./models/Transaction');
+const dns = require('dns');
+
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const seedData = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/auto-engine');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/auto-engine');
     console.log('MongoDB Connected');
 
     // Clear existing data
