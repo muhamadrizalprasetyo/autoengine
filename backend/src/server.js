@@ -62,7 +62,7 @@ app.use('/api/inventories', require('./routes/inventories'));
 app.use('/api/transactions', require('./routes/transactions'));
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
 
