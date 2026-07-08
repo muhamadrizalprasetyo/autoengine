@@ -15,7 +15,7 @@ const CustomerHistory = () => {
   const fetchHistory = async () => {
     try {
       const response = await axios.get('/api/transactions/customer');
-      setHistory(response.data);
+      setHistory(response.data.data || response.data);
     } catch (error) {
       console.error('Error fetching history:', error);
     } finally {

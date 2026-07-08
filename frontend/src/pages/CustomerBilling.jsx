@@ -15,8 +15,9 @@ const CustomerBilling = () => {
   const fetchBills = async () => {
     try {
       const response = await axios.get('/api/bookings');
+      const data = response.data.data || response.data;
       // Filter for bookings waiting for payment (could also include 'Menunggu' if they need to pay DP)
-      const unpaid = response.data.filter(b => b.status_pengerjaan === 'Menunggu Pembayaran' || (b.status_pengerjaan === 'Menunggu' && b.metode_pembayaran_booking !== 'Lunas Nanti'));
+      const unpaid = data.filter(b => b.status_pengerjaan === 'Menunggu Pembayaran' || (b.status_pengerjaan === 'Menunggu' && b.metode_pembayaran_booking !== 'Lunas Nanti'));
       setBills(unpaid);
     } catch (error) {
       console.error('Error fetching bills:', error);

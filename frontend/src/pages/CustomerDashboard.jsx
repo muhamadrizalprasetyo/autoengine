@@ -16,7 +16,7 @@ const CustomerDashboard = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get('/api/bookings');
-      setBookings(response.data);
+      setBookings(response.data.data || response.data);
     } catch (error) {
       console.error('Error fetching bookings:', error);
     } finally {

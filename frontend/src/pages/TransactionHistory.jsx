@@ -34,7 +34,7 @@ const TransactionHistory = () => {
   const fetchTransactions = async () => {
     try {
       const res = await axios.get('/api/transactions');
-      setTransactions(res.data);
+      setTransactions(res.data.data || res.data);
     } catch (err) {
       console.error('Error fetching transactions:', err);
     } finally {

@@ -17,7 +17,7 @@ const CustomerVehicles = () => {
     try {
       // Mocking vehicles from unique bookings since there's no Vehicle model yet
       const response = await axios.get('/api/bookings');
-      const allBookings = response.data;
+      const allBookings = response.data.data || response.data;
       
       const uniqueVehiclesMap = new Map();
       allBookings.forEach(booking => {

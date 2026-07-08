@@ -33,7 +33,7 @@ const AdminDashboard = () => {
   const fetchBookings = useCallback(async () => {
     try {
       const { data } = await axios.get('/api/bookings');
-      setBookings(data);
+      setBookings(data.data || data);
       setLastRefresh(new Date());
     } catch (e) {
       console.error(e);
