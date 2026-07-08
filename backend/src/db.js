@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const dns = require('dns');
 require('dotenv').config();
 
-// Pakai Google DNS supaya SRV lookup ke Atlas nggak diblokir ISP
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+// Hanya pakai custom DNS di local development (karena ISP lokal suka blokir SRV Atlas)
+if (process.env.NODE_ENV !== 'production') {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+}
 
 const connectDB = async () => {
     try {
